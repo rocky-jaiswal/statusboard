@@ -1,0 +1,30 @@
+@import "_variables";
+@import "_font-awesome";
+@import "compass/css3";
+@import "compass/css3/transform";
+
+@mixin keyframes($name) {
+  @-webkit-keyframes $name { @content }
+  @-moz-keyframes $name { @content }
+  @-o-keyframes $name { @content }
+  @keyframes $name { @content }
+}
+
+@mixin animation($value) {
+  @include experimental(animation, $value, -webkit, -moz, -ms, -o, official);
+}
+
+@include keyframes(spin) {
+  100% { @include rotateZ(360deg); }
+}
+
+.loading {
+  display: inline-block;
+  color: lighten($bright, 20);
+  font-size: 32px;
+  i {
+    display: inline-block;
+    @include animation(spin 1.2s infinite);
+  }
+}
+

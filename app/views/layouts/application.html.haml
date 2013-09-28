@@ -1,0 +1,27 @@
+!!!
+%html
+  %head
+    %meta{charset: "utf-8"}/
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+    %title= content_for?(:title) ? yield(:title) : "StatusBoard"
+    - if ENV['RAILS_ENV'] == "development"
+      %link{href: "/assets/.tmp/styles/application.css", media: "screen", rel: "stylesheet", type: "text/css"}/
+    - if ENV['RAILS_ENV'] == "production"
+      %link{href: "/assets/dist/styles/6f291b49.main.css", media: "screen", rel: "stylesheet", type: "text/css"}/
+    = csrf_meta_tags
+  %body
+    / Header
+    = render "shared/header"
+    = render "shared/messages"
+    / Main Page Content
+    .row
+      .small-12.large-12.columns
+        = yield
+    / Footer
+    = render "shared/footer"
+    / JS
+    - if ENV['RAILS_ENV'] == "development"
+      %script{"data-main" => "/assets/.tmp/scripts/main", src: "/assets/app/bower_components/requirejs/require.js"}
+    - if ENV['RAILS_ENV'] == "production"
+      %script{src: "/assets/dist/scripts/vendor/f7f27360.modernizr.js"}
+      %script{"data-main" => "/assets/dist/scripts/26565da7.main", src: "/assets/dist/bower_components/requirejs/require.js"}

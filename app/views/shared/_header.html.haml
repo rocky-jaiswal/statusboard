@@ -1,0 +1,14 @@
+.row.header
+  .large-12.columns
+    %nav.top-bar
+      %ul.title-area
+        %li.name
+          %h1
+            %a{href: "/"} StatusBoard
+      %ul.right
+        %li.has-form
+          - if user_signed_in?
+            %a.button{href: "/users/sign_out"} Logout
+          - else
+            - if !current_page?(root_path)
+              %a.button{href: "/"} Back

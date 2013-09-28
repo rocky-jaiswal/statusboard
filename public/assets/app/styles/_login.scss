@@ -1,0 +1,30 @@
+@import "_variables";
+
+.divider {
+  height: 380px;
+  border-right: 1px dashed $gray;
+}
+
+.instructions {
+  background-color: $instructions-color;
+  padding: 15px;
+  height: 380px;
+  .header {
+    hr {
+      border: 1px solid $header-font-color;
+      margin: 2px;
+    }
+  }
+  .body {
+    h4 {
+      margin: 10px auto;
+    }
+  }
+}
+
+.green {
+  color: $green;
+  &:hover {
+    color: $green;
+  }
+}

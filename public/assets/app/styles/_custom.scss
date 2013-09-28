@@ -1,0 +1,18 @@
+@import "_variables";
+@import "foundation/variables";
+@import "foundation/components/global";
+@import "foundation/components/buttons";
+
+.button-bright {
+  @include button-base;
+  @include button-size;
+  @include button-style($bright, 0, false);
+}
+
+.button {
+  box-shadow: none;
+}
+
+.panel {
+  background-color: #f8f8f8;
+}

@@ -1,0 +1,4 @@
+Statusboard
+========================
+
+Rails + Grunt project

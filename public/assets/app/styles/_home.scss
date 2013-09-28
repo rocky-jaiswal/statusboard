@@ -1,0 +1,41 @@
+ul.right {
+  li.has-form {
+    padding-right: 20px;
+  }
+}
+
+span.label {
+  margin-right: 5px;
+}
+
+.spaced {
+  margin: 20px 0px;
+}
+
+#add-user {
+  height: 2.0em;
+}
+
+#added-users {
+  a.remove-user {
+    color: white;
+    margin-left: 5px;
+  }
+}
+
+.tweet {
+  height: 270px;
+  .panel {
+    height: 245px;
+  }
+  p {
+    font-size: 0.8em;
+  }
+  img {
+    float: right;
+  }
+}
+
+.hidden {
+  visibility: hidden;
+}

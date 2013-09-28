@@ -1,0 +1,10 @@
+.row
+  .small-12.large-12.columns
+    - if notice
+      .alert-box.radius{"data-alert" => ""}
+        = notice
+        %a.close{href: "#"} ×
+    - if alert
+      .alert-box.radius{"data-alert" => ""}
+        = alert
+        %a.close{href: "#"} ×

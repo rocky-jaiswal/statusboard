@@ -1,0 +1,14 @@
+#login-view.row
+  .small-12.large-4.column
+    %h2 Hello!
+    .sign-in
+      = render "devise/sessions/form"
+    .sign-up
+      = render "devise/registrations/form"
+    %h2
+      %a#show-sign-in Sign In
+    %h2
+      %a#show-sign-up Sign Up
+  .large-2.column.divider
+  .small-12.large-6.column
+    = render "shared/instructions"
