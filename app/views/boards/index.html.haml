@@ -1,0 +1,23 @@
+#board-index-view.row
+  .small-12.large-12.column
+    %a.button{href: new_board_path} Create a new Board
+    %hr
+    %h3 Existing Boards
+    %table
+      %thead
+        %tr
+          %th Name
+          %th View
+          %th Edit
+          %th Delete
+      %tbody
+        - @boards.each do |board|
+          %tr
+            %td 
+              = board.name
+            %td 
+              %a.button.success{href: board_path(board)} View
+            %td 
+              %a.button.secondary{href: edit_board_path(board)} Edit
+            %td 
+              %a.button.alert{href: edit_board_path(board)} Delete

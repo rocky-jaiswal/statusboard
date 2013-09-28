@@ -1,0 +1,13 @@
+#board-new-view.row
+  .small-12.large-12.column
+    %h3 Create a Board
+    .messages
+    .row
+      .small-12.large-4.column
+        %form#create-board{:action => "/boards", :method => "POST"}
+          %input{:type => "text", :name => "board_name", :placeholder => "Board Name", :required => ""}/
+          %span Shared:
+          %input{:type => "checkbox", :name => "board_shared"}/
+          %br/
+          %input.button.success{:type => "submit", :value => "Create"}/
+        .statuses

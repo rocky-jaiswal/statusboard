@@ -47,4 +47,7 @@ class User
   
   #Other fields
   field :name, :type => String
+
+  #Associations
+  has_many :boards
 end

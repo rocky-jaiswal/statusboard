@@ -10,7 +10,11 @@ require.config
 
     foundation:
       deps: ["jquery"]
-      exports: "jquery"
+      exports: "foundation"
+
+    jqueryform:
+      deps: ["jquery"]
+      exports: "jqueryform"
 
     handlebars:
       exports: "Handlebars"
@@ -20,6 +24,7 @@ require.config
     backbone: "../bower_components/backbone/backbone"
     underscore: "../bower_components/underscore/underscore"
     foundation: "../bower_components/vendor/foundation"
+    jqueryform: "../bower_components/jquery-form/jquery.form"
     handlebars: "../bower_components/handlebars/handlebars"
     text: "../bower_components/requirejs-text/text"
 
