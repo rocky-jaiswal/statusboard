@@ -13,7 +13,7 @@ class BoardsController < ApplicationController
     b.shared = true if params[:board_shared]
     
     if b.save
-      render :json => {success: true}.to_json and return
+      render :json => {success: true, id: b.id}.to_json and return
     else
       render :json => {success: false, errors: b.errors}.to_json and return
     end

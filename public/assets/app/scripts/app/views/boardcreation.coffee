@@ -19,7 +19,8 @@ define ["jquery", "underscore", "backbone", "jqueryform", "app/views/statuscreat
 
     handleSuccess: (d) =>
       $(".messages").append(@showMessage("Board Created Successfully!"))
-      $("form#create-board").hide()
+      $("form#create-board").slideUp("slow")
+      console.log d
       scv = new StatusCreationView()
       scv.render()
 
