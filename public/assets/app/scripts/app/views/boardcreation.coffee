@@ -17,12 +17,11 @@ define ["jquery", "underscore", "backbone", "jqueryform", "app/views/statuscreat
       e.preventDefault()
       $form.ajaxSubmit(success: @handleSuccess, error: @handleError)
 
-    handleSuccess: (d) =>
+    handleSuccess: (data) =>
       $(".messages").append(@showMessage("Board Created Successfully!"))
       $("form#create-board").slideUp("slow")
-      console.log d
-      scv = new StatusCreationView()
+      scv = new StatusCreationView({boardId: data.id.$oid})
       scv.render()
 
-    handleError: (d) ->
-      console.log d
+    handleError: (data) ->
+      console.log data

@@ -3,4 +3,5 @@ Statusboard::Application.routes.draw do
   root to: 'pages#login'
   get 'home' => 'boards#index', :as => 'home'
   resources :boards
+  resources :statuses
 end

@@ -22,7 +22,7 @@ define ["jquery", "underscore", "backbone", "jqueryform", "handlebars", "text!..
       '<span class="success label">' +  term + '<a href="#" data-term-name="'+ term + '" id="remove-status">&times;</a></span>'
 
     showMessage: (message) ->
-      '<div data-alert class="alert-box">' + message + '<a href="#" class="close">&times;</a></div>'
+      '<div data-alert class="alert-box">' + message + '</div>'
 
     addStatus: (e) ->
       term = $("#status").val()
@@ -42,4 +42,12 @@ define ["jquery", "underscore", "backbone", "jqueryform", "handlebars", "text!..
         alert "Please add a Status first"
         return
       else
-        console.log @statuses
+        $.ajax("/statuses", {type: "POST", data: {boardId: @options.boardId, statuses: @statuses}, success: @statusSuccess, error: @statusError})
+
+    statusSuccess: (data) =>
+      console.log data
+      $(".messages").append(@showMessage("Statuses Created Successfully!"))
+      $(".statuses").slideUp("slow")
+
+    statusError: (data) ->
+      console.log data

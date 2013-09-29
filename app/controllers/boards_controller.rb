@@ -9,8 +9,8 @@ class BoardsController < ApplicationController
 
   def create
     b = Board.new({name: params[:board_name]})
-    b.user = current_user
     b.shared = true if params[:board_shared]
+    b.user = current_user
     
     if b.save
       render :json => {success: true, id: b.id}.to_json and return
