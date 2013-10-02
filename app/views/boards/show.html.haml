@@ -1,0 +1,24 @@
+#board-show-view.row
+  .small-12.large-12.column
+    - @board.statuses.each do |status|
+      .status-lane{ :id => "status-#{status.name}", :style => ("width:" + (100 / @board.statuses.size - (@board.statuses.size*0.1)).to_s + "%") }
+        .title 
+          = status.name
+        .add
+          %a{:href => "#addItem", :id => "add-item"}
+            %i.icon-plus
+
+
+    #add-item-modal.reveal-modal
+      .row
+        .small-12.large-6.column
+          %h3 Add an Item
+          %form#create-item{:action => "/items", :method => "POST"}
+            %input{:type => "text", :name => "item_title", :placeholder => "Item Title", :required => ""}/
+            %br/
+            .key-vals
+            %br/
+            %a#add-key-value.button Add Key-Value Pair
+            %br/
+            %input.button.success{:type => "submit", :value => "Create"}/
+      %a.close-reveal-modal ×

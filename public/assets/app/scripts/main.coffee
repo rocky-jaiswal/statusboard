@@ -28,7 +28,7 @@ require.config
     handlebars: "../bower_components/handlebars/handlebars"
     text: "../bower_components/requirejs-text/text"
 
-require ["backbone", "jquery", "foundation", "app/init"], (Backbone, $, Foundation, Init) ->
+require ["backbone", "jquery", "foundation", "app/init"], (Backbone, $, foundation, Init) ->
   $ ->
     $(document).foundation()
     Init.init()

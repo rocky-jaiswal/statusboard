@@ -16,7 +16,7 @@ define ["jquery", "underscore", "backbone", "jqueryform", "handlebars", "text!..
       @statuses = []
 
     render: ->
-      $(@el).html(@template())
+      $(@el).html(@template({boardId: @options.boardId}))
 
     getTempl: (term) ->
       '<span class="success label">' +  term + '<a href="#" data-term-name="'+ term + '" id="remove-status">&times;</a></span>'
@@ -47,7 +47,10 @@ define ["jquery", "underscore", "backbone", "jqueryform", "handlebars", "text!..
     statusSuccess: (data) =>
       console.log data
       $(".messages").append(@showMessage("Statuses Created Successfully!"))
-      $(".statuses").slideUp("slow")
+      $("#create-status-form").slideUp("slow")
+      $("#save-status").hide()
+      $("#status-list").hide()
+      $(".show-board").removeClass("hidden")
 
     statusError: (data) ->
       console.log data
