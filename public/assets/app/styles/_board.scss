@@ -13,7 +13,7 @@
   .title {
     background-color: #77C4D3;
     padding: 5px;
-    width: 20%;
+    width: 50%;
     color: #333745;
   }
   .add {
@@ -29,4 +29,16 @@
 
 #add-item-modal {
   background-color: #DAEBED;
+}
+
+.dark {
+  background-color: #333745 !important;
+}
+
+.item {
+  background-color: #F6F792;
+  width: 80%;
+  margin: 5px auto;
+  padding: 5px;
+  color: #333745;
 }
