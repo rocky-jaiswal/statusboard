@@ -7,7 +7,7 @@ class BoardsController < ApplicationController
   def show
     @board = Board.find(params[:id])
     if request.xhr?
-      render :json => @board.to_json(:include => {:statuses => {:include => :items}}) and return
+      render :json => @board.to_json(:include => {:statuses => {:include => :items, :methods => :lane_width}}) and return
     end
   end
 

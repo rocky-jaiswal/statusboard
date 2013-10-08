@@ -1,0 +1,40 @@
+<div class="small-12 large-12 column">
+  {{#each board.statuses}}
+    <div class="status-lane" id="status-{{name}}" style="width:{{lane_width}}">
+      <div class="title">{{name}}</div>
+      <div class="add">
+        <a data-status="{{name}}" href="#" id="add-item"><i class="icon-plus"></i></a>
+      </div>
+      <div class="items">
+        {{#each items}}
+          <div class="item">{{title}}</div>
+        {{/each}}
+      </div>
+    </div>
+  {{/each}}
+  
+</div>
+
+
+<div class="reveal-modal" id="add-item-modal">
+  <div class="row">
+    <div class="small-12 large-6 column">
+      <h3>Add an Item</h3>
+      <form action="/items" id="create-item" method="POST">
+        <input id="board_id" type="hidden" value="{{board.id}}">
+        <input id="item_title" placeholder="Item Title" required="" type="text">
+        <br>
+        <div class="key-vals"></div>
+        <br>
+        <h4>Add arbitary key values</h4>
+        <input class="item-key" id="item-key" placeholder="Key" type="text">
+        <input class="item-value" id="item-value" placeholder="Value" type="text">
+        <br>
+        <a class="button" id="add-key-value">Add Key-Value Pair</a>
+        <br>
+        <input class="button success" type="submit" value="Create">
+      </form>
+    </div>
+  </div>
+  <a class="close-reveal-modal">×</a>
+</div>

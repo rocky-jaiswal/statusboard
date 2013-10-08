@@ -7,4 +7,9 @@ class Status
 
   validates_presence_of :name
 
+  def lane_width
+    size = self.board.statuses.size
+    (100 / size - (size*0.1)).to_s + "%"
+  end
+
 end
