@@ -5,12 +5,18 @@ class StatusesController < ApplicationController
   def create
     statuses = params['statuses']
     board_id = params['boardId']
+    board = Board.find(board_id)
 
     statuses.each do |status|
-      Status.create({name: status, board_id: board_id})
+      s = Status.new({name: status})
+      board.statuses << s
     end
 
-    render :json => {success: true}.to_json and return
+    if board.save
+      render :json => {success: true}.to_json and return
+    else
+      render :json => {success: false}.to_json and return
+    end
   end
 
 end

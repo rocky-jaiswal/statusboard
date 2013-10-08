@@ -1,5 +1,3 @@
-#board-show-view.row
-  = render "boards/board"
-
-  #add-item-modal.reveal-modal
-    = render "boards/modal"
+%h3
+  #{@board.name}
+#board-show-view.row{ "data-board-id" => "#{@board.id}" }

@@ -4,18 +4,18 @@ class Board
   field :shared, type: Boolean, default: false
 
   belongs_to  :user
-  embeds_many :items
-  has_many    :statuses
+  embeds_many :statuses
 
   validates_presence_of   :name
   validates_uniqueness_of :name
 
-  def add_item(params)
+  def add_item(status, title, keyVals)
+    status = self.statuses.where(:name => status).first
+
     item = Item.new
-    item.title  = params[:title]
-    item.status = params[:status]
-    
-    keyVals = params[:keyVals] || {}
+    item.title  = title
+    keyVals = keyVals || {}
+
     kv = {}
     keyVals.each do |k, v|
       iKey = v["iKey"]
@@ -24,7 +24,8 @@ class Board
     end
     item.keyVals = kv
     
-    self.items.push(item)
+    status.items.push(item)
     self
   end
+
 end

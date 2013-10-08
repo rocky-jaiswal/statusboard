@@ -2,7 +2,9 @@ class Status
   include Mongoid::Document
   field :name, type: String
   
-  belongs_to :board
+  embedded_in :board
+  embeds_many :items
 
   validates_presence_of :name
+
 end
