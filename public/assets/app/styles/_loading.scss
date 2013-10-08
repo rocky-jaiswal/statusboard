@@ -21,7 +21,7 @@
 .loading {
   display: inline-block;
   color: lighten($bright, 20);
-  font-size: 32px;
+  font-size: 22px;
   i {
     display: inline-block;
     @include animation(spin 1.2s infinite);

@@ -16,6 +16,10 @@ require.config
       deps: ["jquery"]
       exports: "jqueryform"
 
+    jqueryui:
+      deps: ["jquery"]
+      exports: "jqueryui"
+
     handlebars:
       exports: "Handlebars"
 
@@ -24,6 +28,7 @@ require.config
     backbone: "../bower_components/backbone/backbone"
     underscore: "../bower_components/underscore/underscore"
     foundation: "../bower_components/vendor/foundation"
+    jqueryui: "../bower_components/jquery-ui/jquery-ui"
     jqueryform: "../bower_components/jquery-form/jquery.form"
     handlebars: "../bower_components/handlebars/handlebars"
     text: "../bower_components/requirejs-text/text"

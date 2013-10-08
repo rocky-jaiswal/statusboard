@@ -1,4 +1,4 @@
-define ["jquery", "underscore", "backbone", "jqueryform", "foundation", "handlebars", "text!../templates/lanes.hbs", "../models/board"], ($, _, Backbone, jqueryform, foundation, Handlebars, lanesTemplate, BoardModel) ->
+define ["jquery", "underscore", "backbone", "jqueryform", "jqueryui", "foundation", "handlebars", "text!../templates/lanes.hbs", "../models/board"], ($, _, Backbone, jqueryform, jqueryui, foundation, Handlebars, lanesTemplate, BoardModel) ->
   'use strict'
   
   class BoardView extends Backbone.View
@@ -18,7 +18,10 @@ define ["jquery", "underscore", "backbone", "jqueryform", "foundation", "handleb
       @render()
 
     render: ->
+      $(".loading").hide()
       $(@el).html(@template({board: @boardModel.toJSON()}))
+      $(".item").draggable()
+      $(".status-lane").droppable({drop: @handleDrop})
 
     getTempl: (key, val) ->
       '<span class="label">' +  key + ' <i class="icon-arrow-right"></i> ' + val + '</span>'
@@ -48,6 +51,7 @@ define ["jquery", "underscore", "backbone", "jqueryform", "foundation", "handleb
       boardId = $("#board_id").val()
       title   = $("#item_title").val()
       $("#add-item-modal").foundation('reveal', 'close')
+      $(".loading").show()
       $.ajax("/items", {type: "POST", data: {boardId: boardId, title: title, status: @status, keyVals: @keyVals}, success: @handleSuccess, error: @handleError})
 
     handleSuccess: (data) =>
@@ -56,3 +60,7 @@ define ["jquery", "underscore", "backbone", "jqueryform", "foundation", "handleb
 
     handleError: (data) ->
       console.log data
+
+    handleDrop: (event, ui) =>
+      item_id = $(ui.draggable["0"]).data("id")
+      status_id = $(event.target).data("id")
