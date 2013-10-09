@@ -36,10 +36,17 @@
 }
 
 .item {
+  position: relative;
   background-color: #F6F792;
   width: 80%;
   margin: 5px auto;
   padding: 5px;
   color: #333745;
   z-index: 99;
+  i {
+    float: right;
+    color: #777;
+    font-size: 0.8em;
+    padding-top: 2px;
+  }
 }

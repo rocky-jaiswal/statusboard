@@ -12,14 +12,20 @@ define ["jquery", "underscore", "backbone", "jqueryform", "jqueryui", "foundatio
 
     initialize: ->
       @keyVals = []
-      boardId = $("#board-show-view").data("board-id")
-      @boardModel = new BoardModel({id: boardId})
-      @boardModel.fetch({async: false})
+      @loadModel()
       @render()
+
+    loadModel: ->
+      @boardId = $("#board-show-view").data("board-id")
+      @boardModel = new BoardModel({id: @boardId})
+      @boardModel.fetch({async: false})
 
     render: ->
       $(".loading").hide()
       $(@el).html(@template({board: @boardModel.toJSON()}))
+      @prepareDraggable()
+
+    prepareDraggable: ->
       $(".item").draggable()
       $(".status-lane").droppable({drop: @handleDrop})
 
@@ -48,11 +54,10 @@ define ["jquery", "underscore", "backbone", "jqueryform", "jqueryui", "foundatio
 
     handleSubmit: (e) ->
       e.preventDefault()
-      boardId = $("#board_id").val()
-      title   = $("#item_title").val()
+      title = $("#item_title").val()
       $("#add-item-modal").foundation('reveal', 'close')
       $(".loading").show()
-      $.ajax("/items", {type: "POST", data: {boardId: boardId, title: title, status: @status, keyVals: @keyVals}, success: @handleSuccess, error: @handleError})
+      $.ajax("/items", {type: "POST", data: {boardId: @boardId, title: title, status: @status, keyVals: @keyVals}, success: @handleSuccess, error: @handleError})
 
     handleSuccess: (data) =>
       @boardModel.set(data)
@@ -62,5 +67,11 @@ define ["jquery", "underscore", "backbone", "jqueryform", "jqueryui", "foundatio
       console.log data
 
     handleDrop: (event, ui) =>
-      item_id = $(ui.draggable["0"]).data("id")
-      status_id = $(event.target).data("id")
+      item_id     = $(ui.draggable["0"]).data("id")
+      c_status_id = $(ui.draggable["0"]).parent().parent().data("id")
+      n_status_id = $(event.target).data("id")
+      
+      if n_status_id isnt c_status_id
+        $.ajax("/items/" + item_id + "/move", {type: "POST", data: {boardId: @boardId, newStatus: n_status_id, currentStatus: c_status_id}, success: @handleSuccess, error: @handleError})
+      else
+        @render()

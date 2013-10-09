@@ -4,5 +4,9 @@ Statusboard::Application.routes.draw do
   get 'home' => 'boards#index', :as => 'home'
   resources :boards
   resources :statuses
-  resources :items
+  resources :items do
+    member do
+      post 'move'
+    end
+  end
 end

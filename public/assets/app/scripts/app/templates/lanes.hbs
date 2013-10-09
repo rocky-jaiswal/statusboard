@@ -7,7 +7,7 @@
       </div>
       <div class="items">
         {{#each items}}
-          <div class="item" data-id="{{_id.$oid}}">{{title}}</div>
+          <div class="item" data-id="{{_id.$oid}}">{{title}}<i class="icon-move"></i></div>
         {{/each}}
       </div>
     </div>
@@ -21,7 +21,6 @@
     <div class="small-12 large-6 column">
       <h3>Add an Item</h3>
       <form action="/items" id="create-item" method="POST">
-        <input id="board_id" type="hidden" value="{{board.id}}">
         <input id="item_title" placeholder="Item Title" required="" type="text">
         <br>
         <div class="key-vals"></div>

@@ -1,7 +1,6 @@
 %h3
-  #{@board.name}
-
-.loading
-  %i.icon-refresh
+  #{@board.name} 
+  %span.loading 
+    %i.icon-refresh
 
 #board-show-view.row{ "data-board-id" => "#{@board.id}" }
