@@ -73,5 +73,6 @@ define ["jquery", "underscore", "backbone", "jqueryform", "jqueryui", "foundatio
       
       if n_status_id isnt c_status_id
         $.ajax("/items/" + item_id + "/move", {type: "POST", data: {boardId: @boardId, newStatus: n_status_id, currentStatus: c_status_id}, success: @handleSuccess, error: @handleError})
+        $(".loading").show()
       else
         @render()
