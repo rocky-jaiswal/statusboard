@@ -13,18 +13,16 @@ define ["jquery", "underscore", "backbone", "foundation", "handlebars", "text!..
     template: Handlebars.compile(addItemTemplate)
 
     initialize: ->
-      @status = @options.status
-      @boardId = @options.boardId
+      @$el.empty()
       @keyVals = []
       @render()
 
     render: ->
-      $(".modals").empty()
-      $(".modals").append(@template())
+      $(".modals").html(@template())
       $("#add-item-modal").foundation('reveal', 'open')
 
     getTempl: (key, val) ->
-      '<tr><td>' +  key + '</td><td><i class="icon-arrow-right"></i></td><td>' + val + '</td></tr>'
+      '<tr><td>' + key + '</td><td><i class="icon-arrow-right"></i></td><td>' + val + '</td></tr>'
 
     addKeyValue: (e) ->
       k = $("#item-key").val()
@@ -45,12 +43,13 @@ define ["jquery", "underscore", "backbone", "foundation", "handlebars", "text!..
     handleSubmit: (e) ->
       e.preventDefault()
       title = $("#item_title").val()
-      $(".loading").show()
       $("#add-item-modal").foundation('reveal', 'close')
-      $.ajax("/items", {type: "POST", data: {boardId: @boardId, title: title, status: @status, keyVals: @keyVals}, success: @handleSuccess, error: @handleError})
+      $.ajax("/items", {type: "POST", data: {boardId: @options.boardId, title: title, status: @options.status, keyVals: @keyVals}, success: @handleSuccess, error: @handleError})
 
     handleSuccess: (data) =>
-      @options.boardView.handleSuccess(data)
+      @$el.empty()
+      @undelegateEvents()
+      @options.boardModel.set(data)
 
     handleError: (data) ->
       console.log data

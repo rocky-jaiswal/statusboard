@@ -11,11 +11,11 @@ define ["jquery", "underscore", "backbone", "jqueryform", "jqueryui", "foundatio
 
     initialize: ->
       @loadModel()
-      @render()
 
     loadModel: ->
       @boardId = $("#board-show-view").data("board-id")
       @boardModel = new BoardModel({id: @boardId})
+      @boardModel.on("change", @render, @)
       @boardModel.fetch({async: false})
 
     render: ->
@@ -29,11 +29,11 @@ define ["jquery", "underscore", "backbone", "jqueryform", "jqueryui", "foundatio
 
     addItem: (e) ->
       status = $(e.currentTarget).data("status")
-      addView = new AddItemView({status: status, boardId: @boardId, boardView: @})
+      new AddItemView({status: status, boardId: @boardId, boardModel: @boardModel})
 
     showItem: (e) ->
       id = $(e.currentTarget).data("id")
-      new ItemView({itemId: id})
+      new ItemView({boardId: @boardId, itemId: id, boardModel: @boardModel})
 
     handleDrop: (event, ui) =>
       item_id     = $(ui.draggable["0"]).data("id")

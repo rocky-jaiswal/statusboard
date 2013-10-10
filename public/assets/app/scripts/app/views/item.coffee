@@ -6,21 +6,31 @@ define ["jquery", "underscore", "backbone", "foundation", "handlebars", "text!..
     el: ".modals"
 
     events:
-      "click  #delete-item"             : "deleteItem"
+      "click  #delete-item" : "deleteItem"
 
     template: Handlebars.compile(itemTemplate)
 
     initialize: () ->
+      @$el.empty()
       @showItem(@options.itemId)
 
     showItem: (id) ->
       $.ajax("/items/" + id, {type: "GET", success: @showItemModal, error: @handleError})
 
     showItemModal: (data) =>
-      $(".modals").empty()
       data.keyVals = null if _.isEmpty data.keyVals
-      $(".modals").append @template({item: data})
+      $(".modals").html @template({item: data})
       $("#show-item-modal").foundation('reveal', 'open')
 
     handleError: (data) ->
       console.log data
+
+    deleteItem: (e) ->
+      id = $(e.currentTarget).data("id")
+      $("#show-item-modal").foundation('reveal', 'close')
+      $.ajax("/items/" + id, {type: "DELETE", data: {boardId: @options.boardId}, success: @handleSuccess, error: @handleError})
+
+    handleSuccess: (data) =>
+      @$el.empty()
+      @undelegateEvents()
+      @options.boardModel.set(data)
