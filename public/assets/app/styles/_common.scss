@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Monda);
+
 footer {
   p {
     color: #aaa;
@@ -11,4 +13,9 @@ footer {
 
 .padded-left-14 {
   padding-left: 14px;
+}
+
+.message {
+  font-style: italic;
+  color: #aaa;
 }

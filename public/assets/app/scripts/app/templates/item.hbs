@@ -1,0 +1,21 @@
+<div class="reveal-modal" id="show-item-modal">
+  <div class="row">
+    <div class="small-12 large-6 column">
+      <h3>{{item.title}}</h3>
+      {{#if item.keyVals}}
+        <h4>Key-Values:</h4>
+      {{/if}}
+      <table>
+        {{#each item.keyVals}}
+          <tr>
+            <td>{{@key}}</td>
+            <td><i class="icon-arrow-right"></i>
+            <td>{{this}}</td>
+          </tr>
+        {{/each}}
+      </table>
+      <a class="button alert" id="delete-item" data-id="{{item._id.$oid}}">Delete</a>
+    </div>
+  </div>
+  <a class="close-reveal-modal">×</a>
+</div>

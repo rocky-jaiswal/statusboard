@@ -14,12 +14,12 @@ define ["jquery", "underscore", "backbone"], ($, _, Backbone) ->
     showSignIn: ->
       $("#show-sign-in").hide()
       $(".sign-up").hide()
-      $(".sign-in").show()
+      $(".sign-in").slideDown()
       $("#show-sign-up").show()
 
     showSignUp: ->
       $("#show-sign-up").hide()
       $(".sign-in").hide()
-      $(".sign-up").show()
+      $(".sign-up").slideDown()
       $("#show-sign-in").show()
 

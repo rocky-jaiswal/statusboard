@@ -31,6 +31,13 @@
   background-color: #DAEBED;
 }
 
+#show-item-modal {
+  background-color: #DAEBED;
+  h3 {
+    color: #394D92;
+  }
+}
+
 .dark {
   background-color: #333745 !important;
 }
@@ -41,8 +48,10 @@
   width: 80%;
   margin: 5px auto;
   padding: 5px;
-  color: #333745;
-  z-index: 99;
+  z-index: 98;
+  a {
+    color: #333745;
+  }
   i {
     float: right;
     color: #777;

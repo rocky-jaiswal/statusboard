@@ -16,3 +16,19 @@
 .panel {
   background-color: #f8f8f8;
 }
+
+.reveal-modal {
+  top: 0px;
+  margin-bottom: 5px;
+  table {
+    background: none;
+    border: none;
+    margin-bottom: 2px;
+    tr:nth-child(even) {
+      background: none;
+    }
+    td {
+      padding-left: 0px;
+    }
+  }
+}

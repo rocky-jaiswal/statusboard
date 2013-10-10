@@ -26,8 +26,9 @@ define ["jquery", "underscore", "backbone", "jqueryform", "handlebars", "text!..
 
     addStatus: (e) ->
       term = $("#status").val()
-      @statuses.push term
-      $("#status-list").append(@getTempl(term)) if term and term.length > 0
+      if term and term.length > 0
+        @statuses.push("" + term)
+        $("#status-list").append(@getTempl("" + term))
       $("#status").val("")
       $("#status").focus()
 
@@ -35,7 +36,7 @@ define ["jquery", "underscore", "backbone", "jqueryform", "handlebars", "text!..
       elem = $(e.currentTarget)
       elem.parent().hide()
       term = elem.data("term-name")
-      @statuses = _.without(@statuses, term)
+      @statuses = _.without(@statuses, "" + term)
 
     saveStatus: (e) ->
       if @statuses.length is 0

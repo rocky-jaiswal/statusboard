@@ -9,16 +9,15 @@ class Board
   validates_presence_of   :name
   validates_uniqueness_of :name
 
-  def self.move_item(board_id, item_id, old_status_id, new_status_id)
-    board = Board.find(board_id)
-    old_status = board.statuses.find(old_status_id)
-    new_status = board.statuses.find(new_status_id)
+  #Instance methods
+  def move_item(item_id, old_status_id, new_status_id)
+    old_status = self.statuses.find(old_status_id)
+    new_status = self.statuses.find(new_status_id)
     item = old_status.items.find(item_id)
 
-    new_item = Item.new({:title => item.title, :keyVals => item.keyVals})
+    new_item = item.duplicate
     new_status.items.push(new_item)
-    item.delete 
-    new_status.save
+    item.delete && new_status.save
   end
 
   def add_item(status, title, keyVals)

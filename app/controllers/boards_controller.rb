@@ -20,10 +20,19 @@ class BoardsController < ApplicationController
     b.user = current_user
     
     if b.save
-      render :json => {success: true, id: b.id}.to_json and return
+      render :json => {success: true, id: b.id, name: b.name}.to_json and return
     else
       render :json => {success: false, errors: b.errors}.to_json and return
     end
+  end
+
+  def edit
+  end
+
+  def delete
+    board = Board.find(params[:id])
+    board.delete
+    redirect_to boards_path, notice: "Board deleted successfully!"
   end
 
 end

@@ -1,7 +1,6 @@
 #board-index-view.row
   .small-12.large-12.column
     %a.button{href: new_board_path} Create a new Board
-    %hr
     %h3 Existing Boards
     %table
       %thead
@@ -20,4 +19,4 @@
             %td 
               %a.button.secondary{href: edit_board_path(board)} Edit
             %td 
-              %a.button.alert{href: edit_board_path(board)} Delete
+              %a.button.alert{href: delete_board_path(board)} Delete
