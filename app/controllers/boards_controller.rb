@@ -11,6 +11,13 @@ class BoardsController < ApplicationController
     end
   end
 
+  def share
+    @board = Board.find(params[:id])
+    if request.xhr? && @board.shared
+      render :json => @board.to_json(:include => {:statuses => {:include => :items, :methods => :lane_width}}) and return
+    end
+  end
+
   def new
   end
 

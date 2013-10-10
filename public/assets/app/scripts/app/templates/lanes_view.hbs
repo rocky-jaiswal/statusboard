@@ -1,0 +1,12 @@
+<div class="small-12 large-12 column">
+  {{#each board.statuses}}
+    <div class="status-lane" data-id="{{_id.$oid}}" style="width:{{lane_width}}">
+      <div class="title">{{name}}</div>
+      <div class="items">
+        {{#each items}}
+          <div class="item" data-id="{{_id.$oid}}">{{title}}</div>
+        {{/each}}
+      </div>
+    </div>
+  {{/each}}
+</div>

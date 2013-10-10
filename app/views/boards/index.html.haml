@@ -9,6 +9,7 @@
           %th View
           %th Edit
           %th Delete
+          %th Share
       %tbody
         - @boards.each do |board|
           %tr
@@ -20,3 +21,5 @@
               %a.button.secondary{href: edit_board_path(board)} Edit
             %td 
               %a.button.alert{href: delete_board_path(board)} Delete
+            %td 
+              %a.button.success{href: share_board_path(board)} Share

@@ -5,6 +5,7 @@ Statusboard::Application.routes.draw do
   resources :boards do
     member do
       get 'delete'
+      get 'share'
     end
   end
   resources :statuses
