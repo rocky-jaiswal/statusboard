@@ -8,6 +8,7 @@ define ["jquery", "underscore", "backbone", "foundation", "handlebars", "text!..
     events:
       "click  #delete-item"             : "deleteItem"
       "click  #add-key-value"           : "addKeyValue"
+      "click  .close-reveal-modal"      : "clearModal"
       "submit #create-item"             : "handleSubmit"
 
     template: Handlebars.compile(addItemTemplate)
@@ -53,3 +54,8 @@ define ["jquery", "underscore", "backbone", "foundation", "handlebars", "text!..
 
     handleError: (data) ->
       console.log data
+
+    clearModal: ->
+      $("#add-item-modal").foundation('reveal', 'close')
+      @$el.empty()
+      @undelegateEvents()
