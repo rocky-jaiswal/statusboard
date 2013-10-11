@@ -4,7 +4,7 @@ set :application, "statusboard"
 set :repository,  "https://github.com/rocky-jaiswal/statusboard"
 set :scm, :git
 set :user, "torquebox"
-set :deploy_to, "/opt/torquebox/tweetboard"
+set :deploy_to, "/opt/torquebox/statusboard"
 set :torquebox_home, "/opt/torquebox/current"
 set :use_sudo, false
 
