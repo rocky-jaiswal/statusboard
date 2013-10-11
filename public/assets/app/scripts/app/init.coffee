@@ -1,4 +1,4 @@
-define ["jquery", "backbone", "require", "app/views/login", "app/views/home", "app/views/boardcreation", "app/views/board", "app/views/board_share"], ($, Backbone, require, LoginView, HomeView, BoardCreationView, BoardView, BoardShareView) ->
+define ["jquery", "backbone", "require", "app/views/login", "app/views/home", "app/views/boardcreation", "app/views/board", "app/views/board_share", "app/views/feedback"], ($, Backbone, require, LoginView, HomeView, BoardCreationView, BoardView, BoardShareView, FeedbackView) ->
   
   'use strict'
 
@@ -13,6 +13,7 @@ define ["jquery", "backbone", "require", "app/views/login", "app/views/home", "a
         "#board-new-view"       : BoardCreationView
         "#board-show-view"      : BoardView
         "#board-share-view"     : BoardShareView
+        ".feedback"             : FeedbackView
 
       initialized = {}
 

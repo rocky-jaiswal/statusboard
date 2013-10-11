@@ -20,4 +20,6 @@ Statusboard::Application.routes.draw do
     end
   end
 
+  post '/feedback' => 'feedback#create'
+
 end

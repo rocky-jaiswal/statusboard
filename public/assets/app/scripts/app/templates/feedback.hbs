@@ -1,0 +1,17 @@
+<div class="reveal-modal" id="feedback-modal">
+  <div class="row">
+    <div class="small-12 large-6 column">
+      <h3>Feedback</h3>
+      <form action="/feedback" id="create-feedback" method="POST">
+        <textarea name="text" placeholder="Feedback" required/>
+        <input class="button success" type="submit" value="Submit">
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 large-6 column">
+      <p class="message"></p>
+    </div>
+  </div>
+  <a class="close-reveal-modal">×</a>
+</div>
