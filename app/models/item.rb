@@ -10,7 +10,7 @@ class Item
 
   #Instance methods
   def duplicate
-    Item.new({:title => self.title, :keyVals => self.keyVals})
+    Item.new({:title => self.title, :keyVals => self.keyVals, comments: self.comments})
   end
 
   #Class methods
