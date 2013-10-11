@@ -2,6 +2,7 @@ class Item
   include Mongoid::Document
   field :title,  type: String 
   field :keyVals, type: Hash
+  field :comments,  type: String 
   
   embedded_in :status
 
@@ -13,6 +14,22 @@ class Item
   end
 
   #Class methods
+  def self.build(title, comments, keyVals)
+    item = Item.new
+    item.title  = title
+    item.comments  = comments || ""
+    keyVals = keyVals || {}
+
+    kv = {}
+    keyVals.each do |k, v|
+      iKey = v["iKey"]
+      iVal = v["iVal"]
+      kv[iKey] = iVal
+    end
+    item.keyVals = kv
+    item
+  end
+
   def self.search(id)
     item = nil
     Board.all.each do |b|

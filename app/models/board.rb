@@ -20,21 +20,9 @@ class Board
     item.delete && new_status.save
   end
 
-  def add_item(status, title, keyVals)
+  def add_item(status, title, comments, keyVals)
     status = self.statuses.where(:name => status).first
-
-    item = Item.new
-    item.title  = title
-    keyVals = keyVals || {}
-
-    kv = {}
-    keyVals.each do |k, v|
-      iKey = v["iKey"]
-      iVal = v["iVal"]
-      kv[iKey] = iVal
-    end
-    item.keyVals = kv
-    
+    item = Item.build(title, comments, keyVals)
     status.items.push(item)
     self
   end

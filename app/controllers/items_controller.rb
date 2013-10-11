@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
   
   def create
     board = Board.find(params[:boardId])
-    board = board.add_item(params[:status], params[:title], params[:keyVals])
+    board = board.add_item(params[:status], params[:title], params[:comments], params[:keyVals])
     if board.save
       render :json => board.to_json(:include => {:statuses => {:include => :items, :methods => :lane_width}}) and return
     else

@@ -44,8 +44,9 @@ define ["jquery", "underscore", "backbone", "foundation", "handlebars", "text!..
     handleSubmit: (e) ->
       e.preventDefault()
       title = $("#item_title").val()
+      comments = $("#item_comments").val()
       $("#add-item-modal").foundation('reveal', 'close')
-      $.ajax("/items", {type: "POST", data: {boardId: @options.boardId, title: title, status: @options.status, keyVals: @keyVals}, success: @handleSuccess, error: @handleError})
+      $.ajax("/items", {type: "POST", data: {boardId: @options.boardId, title: title, comments: comments, status: @options.status, keyVals: @keyVals}, success: @handleSuccess, error: @handleError})
 
     handleSuccess: (data) =>
       @$el.empty()

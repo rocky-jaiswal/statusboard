@@ -41,7 +41,6 @@ define ["jquery", "underscore", "backbone", "jqueryform", "handlebars", "text!..
     saveStatus: (e) ->
       if @statuses.length is 0
         alert "Please add a Status first"
-        return
       else
         $.ajax("/statuses", {type: "POST", data: {boardId: @options.boardId, statuses: @statuses}, success: @statusSuccess, error: @statusError})
 

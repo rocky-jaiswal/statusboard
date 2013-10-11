@@ -34,3 +34,4 @@ define ["jquery", "underscore", "backbone", "foundation", "handlebars", "text!..
 
     handleError: (data) ->
       alert(JSON.parse(data.responseText).message)
+      location.reload()
