@@ -282,6 +282,17 @@ module.exports = function (grunt) {
                 }
             }
         },
+        compress: {
+            main: {
+                options: {
+                    mode: 'gzip'
+                },
+                expand: true,
+                cwd: '<%= yeoman.app %>/../dist/scripts/',
+                src: ['**/*'],
+                dest: '<%= yeoman.app %>/../dist/scripts/'
+            }
+        },
         rev: {
             dist: {
                 files: {
@@ -342,7 +353,8 @@ module.exports = function (grunt) {
         'uglify',
         'copy',
         'rev',
-        'usemin'
+        'usemin',
+        'compress'
     ]);
 
     grunt.registerTask('default', [
