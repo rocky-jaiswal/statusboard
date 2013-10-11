@@ -10,11 +10,11 @@ gem 'figaro'
 gem 'haml-rails'
 gem 'mongoid', '~> 4', :github=>"mongoid/mongoid"
 gem 'multi_json'
-gem 'zurb-foundation'
 
 group :development do
   gem 'thin'
   gem 'html2haml'
+  gem 'zurb-foundation'
   gem 'quiet_assets'
 end
 
