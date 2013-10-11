@@ -4,4 +4,10 @@ class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
 
   before_filter :authenticate_user!, :except => [:login, :share]
+
+  def authorize(resource)
+    if resource.user != current_user
+      render :nothing => true, :status => :unauthorized and return
+    end
+  end
 end

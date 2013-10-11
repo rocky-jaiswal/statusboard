@@ -6,7 +6,8 @@ class StatusesController < ApplicationController
     statuses = params['statuses']
     board_id = params['boardId']
     board = Board.find(board_id)
-
+    authorize(board)
+    
     statuses.each do |status|
       s = Status.new({name: status})
       board.statuses << s

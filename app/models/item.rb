@@ -30,9 +30,9 @@ class Item
     item
   end
 
-  def self.search(id)
+  def self.search(user, id)
     item = nil
-    Board.all.each do |b|
+    user.boards.each do |b|
       b.statuses.each do |s|
         s.items.each do |i|
           item = i if i.id.to_s == id
