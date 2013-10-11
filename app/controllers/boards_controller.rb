@@ -29,7 +29,7 @@ class BoardsController < ApplicationController
     if b.save
       render :json => {success: true, id: b.id, name: b.name}.to_json and return
     else
-      render :json => {success: false, errors: b.errors}.to_json and return
+      render :status => 500, :json => {success: false, errors: b.errors}.to_json and return
     end
   end
 
@@ -38,8 +38,11 @@ class BoardsController < ApplicationController
 
   def delete
     board = Board.find(params[:id])
-    board.delete
-    redirect_to boards_path, notice: "Board deleted successfully!"
+    if board.delete
+      redirect_to boards_path, notice: "Board deleted successfully!"
+    else
+      render :status => 500, :json => {success: false, message: "error deleting board"}.to_json and return
+    end
   end
 
 end

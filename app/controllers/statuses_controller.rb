@@ -15,7 +15,7 @@ class StatusesController < ApplicationController
     if board.save
       render :json => {success: true}.to_json and return
     else
-      render :json => {success: false}.to_json and return
+      render :status => 500, :json => {success: false, message: "error saving statuses"}.to_json and return
     end
   end
 

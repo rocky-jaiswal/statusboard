@@ -22,9 +22,6 @@ define ["jquery", "underscore", "backbone", "foundation", "handlebars", "text!..
       $(".modals").html @template({item: data})
       $("#show-item-modal").foundation('reveal', 'open')
 
-    handleError: (data) ->
-      console.log data
-
     deleteItem: (e) ->
       id = $(e.currentTarget).data("id")
       $("#show-item-modal").foundation('reveal', 'close')
@@ -34,3 +31,6 @@ define ["jquery", "underscore", "backbone", "foundation", "handlebars", "text!..
       @$el.empty()
       @undelegateEvents()
       @options.boardModel.set(data)
+
+    handleError: (data) ->
+      alert(JSON.parse(data.responseText).message)

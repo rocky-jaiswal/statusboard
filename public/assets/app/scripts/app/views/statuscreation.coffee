@@ -46,12 +46,11 @@ define ["jquery", "underscore", "backbone", "jqueryform", "handlebars", "text!..
         $.ajax("/statuses", {type: "POST", data: {boardId: @options.boardId, statuses: @statuses}, success: @statusSuccess, error: @statusError})
 
     statusSuccess: (data) =>
-      console.log data
-      $(".messages").append(@showMessage("Statuses Created Successfully!"))
+      $(".messages").append(@showMessage(@statuses.length + " statuses created successfully!"))
       $("#create-status-form").slideUp("slow")
       $("#save-status").hide()
       $("#status-list").hide()
       $(".show-board").removeClass("hidden")
 
-    statusError: (data) ->
-      console.log data
+    statusError: (data) =>
+      $(".messages").append(@showMessage("Error while creating statuses. Please try again later."))

@@ -9,6 +9,3 @@
         %li.has-form
           - if user_signed_in?
             %a.button{href: "/users/sign_out"} Logout
-          - else
-            - if !current_page?(root_path)
-              %a.button{href: "/"} Back

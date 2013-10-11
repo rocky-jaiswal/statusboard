@@ -6,11 +6,11 @@ define ["jquery", "underscore", "backbone", "jqueryform", "jqueryui", "foundatio
     template: Handlebars.compile(lanesViewTemplate)
 
     initialize: ->
+      $(".loading").show()
       @loadModel()
 
     loadModel: ->
       boardId = $("#board-share-view").data("board-id")
-      $(".loading").show()
       $.ajax("/boards/" + boardId + "/share", {type: "GET", success: @render, error: @handleError})
 
     render: (data) =>
@@ -18,4 +18,10 @@ define ["jquery", "underscore", "backbone", "jqueryform", "jqueryui", "foundatio
       $(@el).html(@template({board: data}))
 
     handleError: (data) =>
-      console.log data
+      $(".loading").hide()
+      $(".messages").append(@showMessage("Error loading board! Please try again later."))
+
+    showMessage: (message) ->
+      '<div data-alert class="alert-box">' + message + '<a href="#" class="close">&times;</a></div>'
+
+

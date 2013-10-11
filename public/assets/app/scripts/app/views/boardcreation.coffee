@@ -23,5 +23,5 @@ define ["jquery", "underscore", "backbone", "jqueryform", "app/views/statuscreat
       scv = new StatusCreationView({boardId: data.id.$oid})
       scv.render()
 
-    handleError: (data) ->
+    handleError: (data) =>
       $(".messages").append(@showMessage("Error while creating board. Name cannot be null or duplicate"))

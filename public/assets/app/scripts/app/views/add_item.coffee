@@ -53,7 +53,9 @@ define ["jquery", "underscore", "backbone", "foundation", "handlebars", "text!..
       @options.boardModel.set(data)
 
     handleError: (data) ->
-      console.log data
+      @$el.empty()
+      @undelegateEvents()
+      alert(JSON.parse(data.responseText).message)
 
     clearModal: ->
       $("#add-item-modal").foundation('reveal', 'close')

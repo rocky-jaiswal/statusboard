@@ -10,6 +10,7 @@ define ["jquery", "underscore", "backbone", "jqueryform", "jqueryui", "foundatio
     template: Handlebars.compile(lanesTemplate)
 
     initialize: ->
+      $(".loading").show()
       @loadModel()
 
     loadModel: ->
@@ -49,3 +50,12 @@ define ["jquery", "underscore", "backbone", "jqueryform", "jqueryui", "foundatio
     handleSuccess: (data) =>
       @boardModel.set(data)
       @render()
+
+    handleError: (data) =>
+      $(".messages").append(@showMessage(JSON.parse(data.responseText).message))
+      $(".loading").hide()
+
+    showMessage: (message) ->
+      '<div data-alert class="alert-box">' + message + '<a href="#" class="close">&times;</a></div>'
+
+

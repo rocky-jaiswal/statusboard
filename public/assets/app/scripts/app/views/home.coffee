@@ -7,4 +7,4 @@ define ["jquery", "underscore", "backbone"], ($, _, Backbone) ->
       "click #show-something": "showSomething"
 
     initialize: ->
-      console.log 1
+      

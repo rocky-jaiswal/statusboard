@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
     if board.save
       render :json => board.to_json(:include => {:statuses => {:include => :items, :methods => :lane_width}}) and return
     else
-      render :json => {success: false}.to_json and return
+      render :status => 500, :json => {success: false, message: "Error saving item! Plase try again later."}.to_json and return
     end
   end
 
@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
     if res
       render :json => board.to_json(:include => {:statuses => {:include => :items, :methods => :lane_width}}) and return
     else
-      render :json => {success: false}.to_json and return
+      render :status => 500, :json => {success: false, message: "Error moving item! Please try again later."}.to_json and return
     end
   end
 
@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
       board = Board.find(params[:boardId])
       render :json => board.to_json(:include => {:statuses => {:include => :items, :methods => :lane_width}}) and return
     else
-      render :json => {success: false}.to_json and return
+      render :status => 500, :json => {success: false, message: "Error deleting item! Please try again later."}.to_json and return
     end
   end
 
