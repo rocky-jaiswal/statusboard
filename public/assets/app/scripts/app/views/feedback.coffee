@@ -29,3 +29,4 @@ define ["jquery", "underscore", "backbone", "jqueryform", "handlebars", "text!..
     clearModal: ->
       $("#feedback-modal").foundation('reveal', 'close')
       $("#feedback-modal").remove()
+      location.reload() #hack
