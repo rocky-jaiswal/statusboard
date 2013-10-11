@@ -12,7 +12,7 @@ define ["jquery", "underscore", "backbone", "jqueryform", "handlebars", "text!..
       "click #remove-status"  : "removeStatus"
       "click #save-status"    : "saveStatus"
 
-    initialize: ->
+    initialize: (@options) ->
       @statuses = []
 
     render: ->

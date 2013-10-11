@@ -10,7 +10,7 @@ define ["jquery", "underscore", "backbone", "foundation", "handlebars", "text!..
 
     template: Handlebars.compile(itemTemplate)
 
-    initialize: () ->
+    initialize: (@options) ->
       @$el.empty()
       @showItem(@options.itemId)
 

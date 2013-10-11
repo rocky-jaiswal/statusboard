@@ -13,7 +13,7 @@ define ["jquery", "underscore", "backbone", "foundation", "handlebars", "text!..
 
     template: Handlebars.compile(addItemTemplate)
 
-    initialize: ->
+    initialize: (@options) ->
       @$el.empty()
       @keyVals = []
       @render()
