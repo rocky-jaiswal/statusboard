@@ -37,6 +37,4 @@ group :test do
   gem 'capybara'
 end
 
-group :production do
-  gem 'puma'
-end
+gem 'capistrano'
