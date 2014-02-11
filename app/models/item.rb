@@ -19,14 +19,9 @@ class Item
     item.title  = title
     item.comments  = comments || ""
     keyVals = keyVals || {}
-
-    kv = {}
-    keyVals.each do |k, v|
-      iKey = v["iKey"]
-      iVal = v["iVal"]
-      kv[iKey] = iVal
-    end
-    item.keyVals = kv
+    item.keyVals = keyVals.each_with_object({}) do |(k, v), o|
+      o[v["iKey"]] = v["iVal"]
+    end || {}
     item
   end
 

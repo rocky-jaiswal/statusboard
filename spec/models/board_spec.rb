@@ -13,7 +13,7 @@ describe Board do
     b.statuses << status2
     b.save
 
-    Board.move_item(b.id, item.id, status1.id, status2.id)
+    Board.last.move_item(item.id, status1.id, status2.id)
 
     Board.find(b.id).statuses.find(status1.id).items.count.should == 0
     Board.find(b.id).statuses.find(status2.id).items.count.should == 1
