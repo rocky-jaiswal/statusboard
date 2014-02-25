@@ -78,6 +78,7 @@ Statusboard::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
+  config.action_mailer.default_url_options = { :protocol => 'http', :host => 'statusb.herokuapp.com' }
   config.action_mailer.smtp_settings = {
     :port           => ENV['MAILGUN_SMTP_PORT'],
     :address        => ENV['MAILGUN_SMTP_SERVER'],
@@ -87,4 +88,6 @@ Statusboard::Application.configure do
     :authentication => :plain
   }
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
 end
