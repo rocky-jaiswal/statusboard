@@ -21,7 +21,7 @@ class Item
     keyVals = keyVals || {}
     item.keyVals = keyVals.each_with_object({}) do |(k, v), o|
       o[v["iKey"]] = v["iVal"]
-    end || {}
+    end
     item
   end
 

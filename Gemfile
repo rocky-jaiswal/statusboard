@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.2'
 
 gem 'simple_form'
 gem 'turbolinks'
@@ -31,4 +31,6 @@ group :test do
   gem 'capybara'
 end
 
-gem 'capistrano'
+gem 'rails_12factor', group: :production
+#gem 'capistrano'
+ruby "2.1.1"
